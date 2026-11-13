@@ -1,0 +1,55 @@
+/*
+ * DESIGN.md §6 — Direction B: Executive Briefing Folio
+ * (Financial Times Monograph × Legal Side-by-Side Exhibit × Bank Negara Bulletin)
+ *
+ * Components consume ONLY these CSS variables through the Tailwind v4 @theme
+ * mappings in globals.css (bg-surface-1, text-ink-2, border-rule, ...).
+ * Zero raw hex values outside this file.
+ */
+
+:root {
+  /* Light theme (default): Warm Newsprint Bisque & Archival Cream */
+  --surface-0: #f6f0e6;
+  --surface-1: #fffdf9;
+  --surface-2: #eae0d1;
+  --ink-1: #1c1917;
+  --ink-2: #524941;
+  --rule: #cfc3b2;
+  /* Burgundy Seal: certified policy citation & active exhibit rule only */
+  --accent: #7a1c37;
+  /* State-only semantic markers (governed match vs. ungrounded drift) */
+  --positive: #14532d;
+  --negative: #941b1b;
+  --focus-ring: #7a1c37;
+
+  /* Shape: 1px micro-cut corners everywhere (DESIGN.md §6.3) */
+  --radius: 1px;
+
+  /* Typography: loaded via next/font/google in app/layout.tsx */
+  --font-display: var(--font-fraunces), Georgia, serif;
+  --font-sans: var(--font-work-sans), system-ui, sans-serif;
+  --font-mono: var(--font-fira-code), ui-monospace, monospace;
+
+  /* Motion (DESIGN.md §7) */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast: 90ms;
+  --dur-base: 180ms;
+
+  color-scheme: light;
+}
+
+.theme-dark {
+  /* Dark theme: Espresso Library & Ledger Parchment Ink */
+  --surface-0: #151210;
+  --surface-1: #1e1a17;
+  --surface-2: #29231e;
+  --ink-1: #f5efe6;
+  --ink-2: #bfb4a6;
+  --rule: #3d342d;
+  --accent: #f79cb8;
+  --positive: #6ee7b7;
+  --negative: #fca5a5;
+  --focus-ring: #f79cb8;
+
+  color-scheme: dark;
+}

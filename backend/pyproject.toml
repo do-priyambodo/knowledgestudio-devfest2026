@@ -1,0 +1,65 @@
+[project]
+name = "knowledgestudio-devfest2026-backend"
+version = "0.2.0"
+description = "FastAPI SSE backend & mounted ADK Web Playground for Google Cloud Knowledge Studio DevFest KL 2026 sample"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.115.0,<1",
+    "uvicorn[standard]>=0.30.0,<1",
+    "pydantic>=2.8,<3",
+    "pydantic-settings>=2.4.0,<3",
+    "structlog>=24.4.0",
+    "httpx>=0.27.0",
+    "knowledgestudio-devfest2026-agent>=0.3,<1",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3.0",
+    "pytest-asyncio>=0.24.0",
+    "mypy>=1.11.0",
+    "ruff>=0.6.0",
+]
+
+[tool.uv.sources]
+knowledgestudio-devfest2026-agent = { path = "agent", editable = true }
+
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/api"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+pythonpath = ["src"]
+testpaths = ["src", "tests"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py312"
+extend-exclude = ["agent"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "UP", "B", "I"]
+ignore = ["E501"]
+
+[tool.mypy]
+python_version = "3.12"
+mypy_path = "src"
+explicit_package_bases = true
+exclude = ["^agent/", "^\\.venv/"]
+
+[[tool.mypy.overrides]]
+module = ["google.adk.*", "google.genai.*", "google.auth.*", "google.cloud.*"]
+ignore_missing_imports = true
+
+[tool.uv]
+override-dependencies = [
+    "opentelemetry-api>=1.45.1",
+    "opentelemetry-sdk>=1.45.1",
+    "opentelemetry-semantic-conventions>=0.66b1",
+]

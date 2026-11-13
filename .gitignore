@@ -1,0 +1,75 @@
+# ==============================================================================
+# Security & Environment Configuration
+# ==============================================================================
+.env
+.env.*
+!.env.example
+*.env
+*.local.md
+
+# Credentials, Keys & Cloud Auth (NEVER commit)
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+*.token
+id_rsa*
+id_ed25519*
+*credentials*.json
+*service_account*.json
+*service-account*.json
+client_secret*.json
+adc.json
+.gcloud/
+
+# Python & uv
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+build/
+dist/
+*.egg-info/
+.venv/
+venv/
+env/
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+.uv/
+
+# Google ADK Local State
+.adk/
+.agent-cache/
+eval_results/
+eval_runs/
+*.eval.json
+
+# Node.js & Next.js Frontend
+node_modules/
+.next/
+out/
+.turbo/
+.vercel/
+next-env.d.ts
+*.tsbuildinfo
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Logs, Local Databases & OS/Editor Files
+*.log
+logs/
+*.sqlite
+*.sqlite3
+*.db
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo

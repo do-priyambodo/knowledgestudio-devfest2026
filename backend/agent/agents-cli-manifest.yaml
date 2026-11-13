@@ -1,0 +1,14 @@
+manifest_version: "1.0"
+name: "app-agent"
+agent_directory: "app"
+region: "us-central1"
+base_template: "adk"
+template_name: "adk-base"
+agent_framework: "google-adk"
+language: "python"
+create_params:
+  deployment_target: "none"
+  session_type: "none"
+  is_a2a: false
+  cicd_runner: "skip"
+  agent_guidance_filename: "README.md"

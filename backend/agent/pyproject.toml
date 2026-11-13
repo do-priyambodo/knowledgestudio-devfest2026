@@ -1,0 +1,65 @@
+[project]
+name = "knowledgestudio-devfest2026-agent"
+version = "0.3.0"
+description = "DevFest KL 2026 Google ADK comparison suite: Without Knowledge Studio vs. Powered by Knowledge Studio"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "google-adk[mcp]>=2.11.0,<3",
+    "google-genai>=2.19,<3",
+    "google-cloud-bigquery>=3.25.0,<4",
+    "google-cloud-dataplex>=2.6.0,<3",
+    "google-auth>=2.35.0,<3",
+    "pydantic>=2.8,<3",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3.0",
+    "pytest-asyncio>=0.24.0",
+    "mypy>=1.11.0",
+    "ruff>=0.6.0",
+]
+
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["app", "agent_1_without_kc", "agent_2_with_kc"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "UP", "B", "I"]
+ignore = ["E501"]
+
+[tool.mypy]
+python_version = "3.12"
+exclude = ["^\\.venv/"]
+
+[[tool.mypy.overrides]]
+module = [
+    "google.adk.*",
+    "google.genai.*",
+    "google.cloud.*",
+    "google.auth.*",
+    "google.api_core.*",
+    "google.protobuf.*",
+    "mcp.*",
+]
+ignore_missing_imports = true
+
+[tool.uv]
+override-dependencies = [
+    "opentelemetry-api>=1.45.1",
+    "opentelemetry-sdk>=1.45.1",
+    "opentelemetry-semantic-conventions>=0.66b1",
+]

@@ -1,0 +1,30 @@
+{
+  "eval_cases": [
+    {
+      "id": "eval_001_q3_malaysia_premium_revenue_governed",
+      "prompt": "What was our Q3 2026 Net Revenue from Premium Customers in Malaysia?",
+      "reference": "The governed agent must discover and look up Knowledge Studio context via search_entries and lookup_context, apply users.traffic_source = 'Email' AND users.age >= 35 AND orders_raw_v2.ord_stat_cd = 1, avoid users.legacy_vip_flag, and report RM 1,280,000.00.",
+      "expected_tools": ["search_entries", "lookup_context", "run_readonly_bigquery_sql"]
+    },
+    {
+      "id": "eval_002_kl_total_revenue_qa_exclusion",
+      "prompt": "What was our Q3 2026 Total Revenue from Kuala Lumpur customers?",
+      "reference": "The governed agent must retrieve Knowledge Studio status code rules, exclude returned (2), cancelled (9), and QA sandbox (99) rows, and report RM 620,000.00.",
+      "expected_tools": ["search_entries", "lookup_context", "run_readonly_bigquery_sql"]
+    }
+  ],
+  "cases": [
+    {
+      "id": "eval_001_q3_malaysia_premium_revenue_governed",
+      "prompt": "What was our Q3 2026 Net Revenue from Premium Customers in Malaysia?",
+      "reference": "The governed agent must discover and look up Knowledge Studio context via search_entries and lookup_context, apply users.traffic_source = 'Email' AND users.age >= 35 AND orders_raw_v2.ord_stat_cd = 1, avoid users.legacy_vip_flag, and report RM 1,280,000.00.",
+      "expected_tools": ["search_entries", "lookup_context", "run_readonly_bigquery_sql"]
+    },
+    {
+      "id": "eval_002_kl_total_revenue_qa_exclusion",
+      "prompt": "What was our Q3 2026 Total Revenue from Kuala Lumpur customers?",
+      "reference": "The governed agent must retrieve Knowledge Studio status code rules, exclude returned (2), cancelled (9), and QA sandbox (99) rows, and report RM 620,000.00.",
+      "expected_tools": ["search_entries", "lookup_context", "run_readonly_bigquery_sql"]
+    }
+  ]
+}
